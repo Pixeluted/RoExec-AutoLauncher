@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ProcessMonitor.cpp" />
+    <ClCompile Include="src\RoExec-Launcher.cpp" />
     <ClCompile Include="src\ShellTray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common.h" />
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\ProcessMonitor.h" />
+    <ClInclude Include="src\RoExec-Launcher.h" />
     <ClInclude Include="src\ShellTray.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

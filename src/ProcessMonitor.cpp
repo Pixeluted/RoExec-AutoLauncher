@@ -1,5 +1,6 @@
 #include "common.h"
 #include "ProcessMonitor.h"
+#include "RoExec-Launcher.h"
 
 bool IsRobloxRunning() {
 	DWORD aProcesses[1024], cbNeeded, cProcesses;
@@ -44,8 +45,7 @@ void mainLoop() {
 	while (!isRobloxFound) {
 		isRobloxFound = IsRobloxRunning();
 		if (isRobloxFound) {
-			// TODO: Launch ro-exec
-			MessageBoxA(NULL, "OH MY GAD ROBLOX LAUNCHED", "REAL!!!", MB_OK);
+			launchRoExec();
 		}
 		else {
 			Sleep(1000);
