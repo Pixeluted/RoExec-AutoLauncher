@@ -13,11 +13,22 @@ BOOL validateEnviroment() {
 			return FALSE;
 		}
 
+		wchar_t ownPath[MAX_PATH];
+		if (!GetModuleFileName(NULL, ownPath, MAX_PATH)) {
+			MessageBoxA(NULL, "Failed to get own executable name!", "Error", MB_OK);
+			FindClose(hFind);
+			return FALSE;
+		}
+
 		do {
 			wchar_t fullPath[MAX_PATH];
 			GetCurrentDirectory(MAX_PATH, fullPath);
 			wcscat_s(fullPath, L"\\");
 			wcscat_s(fullPath, findFileData.cFileName);
+
+			if (_wcsicmp(fullPath, ownPath) == 0) {
+				continue;
+			}
 
 			loaderPath = fullPath;
 
