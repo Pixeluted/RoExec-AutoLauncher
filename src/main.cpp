@@ -1,8 +1,11 @@
 #include "common.h"
 #include "main.h"
 #include "ShellTray.h"
+#include "ProcessMonitor.h"
 
 int main() {
+	startProcessLoop();
+
 	HWND hwnd = createWindow();
 
 	if (!hwnd) {
