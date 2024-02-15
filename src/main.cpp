@@ -4,7 +4,26 @@
 #include "ProcessMonitor.h"
 #include "RoExec-Launcher.h"
 
+HANDLE runningMutex = NULL;
+
+BOOL AlreadyRunning() {
+	HANDLE mutex = CreateMutex(NULL, FALSE, L"RoExec-AutoLauncher-Singleton");
+
+	if (GetLastError() == ERROR_ALREADY_EXISTS) {
+		return TRUE;
+	}
+
+	runningMutex = mutex;
+
+	return FALSE;
+}
+
 int main() {
+	if (AlreadyRunning()) {
+		MessageBoxA(NULL, "Auto-launcher already running!", "Error", MB_OK);
+		return EXIT_FAILURE;
+	}
+
 	if (!validateEnviroment()) {
 		MessageBoxA(NULL, "Place this executable into the folder with your loader!", "Error", MB_OK);
 		return EXIT_FAILURE;
@@ -30,5 +49,6 @@ int main() {
 	}
 
 	RemoveTrayIcon(hwnd);
+	CloseHandle(runningMutex);
 	return EXIT_SUCCESS;
 }

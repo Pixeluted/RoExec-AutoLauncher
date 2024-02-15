@@ -36,6 +36,7 @@ void ShowContextMenu(HWND hwnd, POINT pt) {
 BOOL handleWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	switch (uMsg) {
 	case WM_DESTROY:
+		RemoveTrayIcon(hwnd);
 		PostQuitMessage(0);
 		return TRUE;
 	case WM_TRAYICON:
