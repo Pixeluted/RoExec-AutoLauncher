@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="launcher.cpp">
+    <ClCompile Include="src\launcher.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="launcher.h">
+    <ClInclude Include="src\launcher.h">
       <Filter>Zdrojové soubory</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="src\main.h">
       <Filter>Zdrojové soubory</Filter>
     </ClInclude>
   </ItemGroup>
