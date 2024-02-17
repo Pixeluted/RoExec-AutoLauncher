@@ -63,5 +63,11 @@ void mainLoop() {
 }
 
 void startProcessLoop() {
-	CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)mainLoop, NULL, NULL, NULL);
+	HANDLE threadHandle = CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)mainLoop, NULL, NULL, NULL);
+	if (!threadHandle) {
+		MessageBoxA(NULL, "Failed to start checking loop!", "Error", MB_OK);
+		exit(1);
+	}
+
+	CloseHandle(threadHandle);
 }
