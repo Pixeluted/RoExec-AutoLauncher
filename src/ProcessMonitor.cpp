@@ -17,6 +17,9 @@ bool IsRobloxRunning() {
 			TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
 
 			HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, aProcesses[i]);
+			if (!hProcess) {
+				continue;
+			}
 
 			if (nullptr != hProcess) {
 				HMODULE hMod;
