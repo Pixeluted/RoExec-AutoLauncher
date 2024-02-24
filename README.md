@@ -1,3 +1,5 @@
+# MAKE SURE THE PUT THE AUTO-LAUNCHER INTO THE FOLDER WITH THE KRAMPUS LOADER!
+
 # RoExec Autolauncher
 As the name suggests, this program will auto launch ro-exec whenever you launch roblox so you don't have to do it manually :)
 This program might contains bugs so if you find any please create issue or you can fix them yourself and then create pull request.
