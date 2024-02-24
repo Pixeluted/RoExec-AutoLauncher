@@ -31,6 +31,7 @@ BOOL validateEnviroment() {
 			}
 
 			loaderPath = fullPath;
+			std::wcout << L"Found loader: " << fullPath << std::endl;
 
 			break;
 		} while (FindNextFile(hFind, &findFileData) != 0);
@@ -54,7 +55,7 @@ void launchRoExec() {
 		NULL,
 		NULL,
 		FALSE,
-		0,
+		CREATE_NEW_CONSOLE,
 		NULL,
 		NULL,
 		&startupInfo,
