@@ -2,6 +2,24 @@
 #include "ProcessMonitor.h"
 #include "RoExec-Launcher.h"
 
+std::vector<DWORD> lastRobloxPIDs;
+
+bool IsPIDInHistory(DWORD pid) {
+	auto it = std::find(lastRobloxPIDs.begin(), lastRobloxPIDs.end(), pid);
+
+	return it != lastRobloxPIDs.end();
+}
+
+void AddPIDToHistoryList(DWORD newPID) {
+	auto it = std::find(lastRobloxPIDs.begin(), lastRobloxPIDs.end(), newPID);
+	if (it == lastRobloxPIDs.end()) {
+		if (lastRobloxPIDs.size() >= 2) {
+			lastRobloxPIDs.erase(lastRobloxPIDs.begin());
+		}
+		lastRobloxPIDs.push_back(newPID);
+	}
+}
+
 bool IsRobloxRunning() {
 	DWORD aProcesses[1024], cbNeeded, cProcesses;
 	unsigned int i;
@@ -30,10 +48,12 @@ bool IsRobloxRunning() {
 				}
 			}
 
-			if (!_wcsicmp(L"RobloxPlayerBeta.exe", szProcessName)) {
+			if (!_wcsicmp(L"RobloxPlayerBeta.exe", szProcessName) && IsPIDInHistory(aProcesses[i]) == FALSE) {
+				AddPIDToHistoryList(aProcesses[i]);
 				CloseHandle(hProcess);
 				return TRUE;
 			}
+
 
 			CloseHandle(hProcess);
 		}
@@ -51,13 +71,6 @@ void mainLoop() {
 			launchRoExec();
 		}
 		else {
-			Sleep(1000);
-		}
-	}
-
-	while (isRobloxFound) {
-		isRobloxFound = IsRobloxRunning();
-		if (isRobloxFound) {
 			Sleep(1000);
 		}
 	}
