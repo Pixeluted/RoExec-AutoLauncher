@@ -8,5 +8,5 @@ This program might contains bugs so if you find any please create issue or you c
 Then simply run the exe and after 6 seconds it will hide itself to the system tray.
 To stop the launcher, go into your system tray, right click on the exe icon and click on "Exit", this will stop the auto-launcher!
 
-## Quick Demo
-https://github.com/Pixeluted/RoExec-AutoLauncher/assets/78791776/f8666d53-56ee-408a-ada8-f3c134475477
+## Demo + Installation
+https://github.com/Pixeluted/RoExec-AutoLauncher/assets/78791776/ce3fb27d-50cc-452e-9cc6-d9d3b2fa01a2
