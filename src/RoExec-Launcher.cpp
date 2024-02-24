@@ -3,6 +3,22 @@
 
 namespace fs = std::filesystem;
 
+bool containsString(const std::wstring& filePath, const char* searchString) {
+	std::string narrowFilePath(filePath.begin(), filePath.end());
+
+	std::ifstream file(narrowFilePath, std::ios::binary);
+	if (!file) {
+		MessageBoxA(NULL, "Failed to open the target .exe!", "Error", MB_OK);
+		exit(1);
+		return false;
+	}
+
+	std::string fileContents((std::istreambuf_iterator<char>(file)),
+		std::istreambuf_iterator<char>());
+
+	return fileContents.find(searchString) != std::string::npos;
+}
+
 BOOL validateEnviroment() {
 	WIN32_FIND_DATA findFileData;
 	HANDLE hFind = FindFirstFile(L"*.exe", &findFileData);
@@ -29,11 +45,23 @@ BOOL validateEnviroment() {
 			continue;
 		}
 
+		std::wstring loaderPathConverted = fullPath;
+
+		// Because they removed the need for launch.cfg I needed new way to make sure the .exe we are targetting is really the launcher, so I used IDA and found string to check for, so we can really confirm its the right exe!
+		bool doesContain = containsString(loaderPathConverted, "Authentication failed: %d");
+		if (!doesContain) {
+			continue;
+		}
+
 		loaderPath = fullPath;
 		std::wcout << L"Found loader: " << fullPath << std::endl;
 
 		break;
 	} while (FindNextFile(hFind, &findFileData) != 0);
+
+	if (loaderPath == L"") {
+		return FALSE;
+	}
 
 	return TRUE;
 }

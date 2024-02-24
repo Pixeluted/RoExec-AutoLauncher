@@ -2,7 +2,7 @@
 #include <fstream>
 #include <filesystem>
 
-inline std::wstring loaderPath;
+inline std::wstring loaderPath = L"";
 
 BOOL validateEnviroment();
 void launchRoExec();
