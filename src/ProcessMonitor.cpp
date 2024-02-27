@@ -13,7 +13,7 @@ bool IsPIDInHistory(DWORD pid) {
 void AddPIDToHistoryList(DWORD newPID) {
 	auto it = std::find(lastRobloxPIDs.begin(), lastRobloxPIDs.end(), newPID);
 	if (it == lastRobloxPIDs.end()) {
-		if (lastRobloxPIDs.size() >= 2) {
+		if (lastRobloxPIDs.size() >= 50) {
 			lastRobloxPIDs.erase(lastRobloxPIDs.begin());
 		}
 		lastRobloxPIDs.push_back(newPID);
