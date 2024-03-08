@@ -32,6 +32,8 @@ int main() {
 	std::cout << "You can now launch roblox as normal. We will launch ro-exec for you!" << std::endl;
 	std::cout << "This process will go into your tray, to stop auto-launcher click on the icon and click exit." << std::endl;
 	Sleep(6000);
+	FreeConsole();
+	Sleep(100);
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	HWND hwnd = createWindow();
