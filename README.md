@@ -1,6 +1,4 @@
-# Because mister munchdogs decided to ban lot of people for just talking about crack that was released by someone, I'm no longer going to be supporting this tool and he can piss off too. I got private executor anyways so bye.
-![image](https://github.com/Pixeluted/RoExec-AutoLauncher/assets/78791776/6de7f790-3e3f-4029-b8c0-496d0aaca223)
-
+# Discontinued in favor of https://github.com/snipcola/KrampUI
 # RoExec Autolauncher
 As the name suggests, this program will auto launch ro-exec whenever you launch roblox so you don't have to do it manually :)
 This program might contains bugs so if you find any please create issue or you can fix them yourself and then create pull request.
